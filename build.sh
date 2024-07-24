@@ -10,7 +10,7 @@ git submodule update
 source poky/oe-init-build-env
 
 CONFLINE="MACHINE = \"qemuarm64\""
-CONFLINE2="SSTATE_DIR ?= \"/home/william/Linux_programming_buildroot/assignment-6-willpfigueiredo/build/sstate-cache\""
+CONFLINE2="SSTATE_MIRRORS ?= \"/home/william/Linux_programming_buildroot/assignment-6-willpfigueiredo/build/sstate-cache\""
 CONFLINE3="DL_DIR ?= \"/home/william/Linux_programming_buildroot/assignment-6-willpfigueiredo/build/downloads\""
 
 cat conf/local.conf | grep "${CONFLINE}" > /dev/null
@@ -19,6 +19,7 @@ local_conf_info=$?
 if [ $local_conf_info -ne 0 ];then
 	echo "Append ${CONFLINE} in the local.conf file"
 	echo ${CONFLINE} >> conf/local.conf
+	echo ${CONFLINE2} >> conf/local.conf
 	
 else
 	echo "${CONFLINE} already exists in the local.conf file"
